@@ -31,10 +31,31 @@ label start:
         outputted = choice(strlist)
 
     show expression "interface/bg_base.jpg" as bg
+    
     'Hello, world!'
     '[to_say]'
     '[outputted]'
     'Kugelshkriber'
+    
+    call lbl_choose_type
+    return
+    
+label lbl_choose_type:
+    menu:
+        'Дженерик':
+            $ chartype = 'generic'
+        'Принцесса':
+            $ chartype = 'princess'
+        'Крестьянка':
+            $ chartype = 'pesant'  
+            
+    call lbl_output
+    return
+
+label lbl_output:
+
+    '[to_say]'   
+>>>>>>> origin/master
     
     menu:
         "That's all folks!":

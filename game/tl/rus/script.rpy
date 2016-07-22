@@ -26,3 +26,17 @@ translate rus start_159ca46d:
     # "Kugelshkriber"
     "Кугельшкрайбер"
 
+# TODO: Translation updated at 2016-07-22 19:53
+
+# game/script.rpy:30
+translate rus start_e9a3010f:
+
+    # "[txt]"
+    ""
+
+# game/script.rpy:31
+translate rus start_7fe2b33d:
+
+    # "[to_say]"
+    ""
+
