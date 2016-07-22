@@ -24,9 +24,16 @@ label start:
     $ Outputable.set_lang(_preferences.language)
     $ antosha = Outputable('Antosha Sichev', 'antosha')
     $ to_say = antosha.description()
+    python:
+        string1 = __('Hello World!')
+        string2 = __('Bye bye dude')
+        strlist = [string1, string2]
+        outputted = choice(strlist)
+
     show expression "interface/bg_base.jpg" as bg
     'Hello, world!'
-    '[to_say]'   
+    '[to_say]'
+    '[outputted]'
     'Kugelshkriber'
     
     menu:

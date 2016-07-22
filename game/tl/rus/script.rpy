@@ -11,6 +11,12 @@ translate rus strings:
     # game/script.rpy:21
     old "That's all folks!"
     new "Ну вот и всё, ребята."
+    # game/script.rpy:28
+    old "Hello World!"
+    new "Здравствуй, мир!"
+    # game/script.rpy:29
+    old "Bye bye dude"
+    new "Пока чувак"
 
 # TODO: Translation updated at 2016-07-21 05:03
 
