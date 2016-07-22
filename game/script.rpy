@@ -25,9 +25,25 @@ label start:
     $ antosha = Outputable('Antosha Sichev', 'antosha')
     $ to_say = antosha.description()
     show expression "interface/bg_base.jpg" as bg
-    'Hello, world!'
+    
+    call lbl_choose_type
+    return
+    
+label lbl_choose_type:
+    menu:
+        'Дженерик':
+            $ chartype = 'generic'
+        'Принцесса':
+            $ chartype = 'princess'
+        'Крестьянка':
+            $ chartype = 'pesant'  
+            
+    call lbl_output
+    return
+
+label lbl_output:
+
     '[to_say]'   
-    'Kugelshkriber'
     
     menu:
         "That's all folks!":
