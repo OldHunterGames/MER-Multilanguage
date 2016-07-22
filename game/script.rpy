@@ -31,7 +31,7 @@ label start:
         outputted = choice(strlist)
 
     show expression "interface/bg_base.jpg" as bg
-    
+
     'Hello, world!'
     '[to_say]'
     '[outputted]'
@@ -55,7 +55,6 @@ label lbl_choose_type:
 label lbl_output:
 
     '[to_say]'   
->>>>>>> origin/master
     
     menu:
         "That's all folks!":
