@@ -4,7 +4,7 @@
     
 init -1 python:
     from random import *
-   
+    from output import Outputable
 init python:
     pass
 
@@ -21,8 +21,12 @@ label lang_rus:
     return
 
 label start:
+    $ Outputable.set_lang(_preferences.language)
+    $ antosha = Outputable('Antosha Sichev', 'antosha')
+    $ to_say = antosha.description()
     show expression "interface/bg_base.jpg" as bg
-    'Hello, world!'   
+    'Hello, world!'
+    '[to_say]'   
     'Kugelshkriber'
     
     menu:
