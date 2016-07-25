@@ -1,30 +1,30 @@
 ﻿# TODO: Translation updated at 2016-07-26 00:04
 
 # game/script.rpy:37
-translate rus lbl_output_7fe2b33d:
+translate eng lbl_output_7fe2b33d:
 
     # "[to_say]"
     ""
 
 # game/script.rpy:40
-translate rus lbl_output_7fe2b33d_1:
+translate eng lbl_output_7fe2b33d_1:
 
     # "[to_say]"
     ""
 
-translate rus strings:
+translate eng strings:
 
     # game/script.rpy:24
     old "Дженерик"
-    new ""
+    new "Generic"
 
     # game/script.rpy:24
     old "Принцесса"
-    new ""
+    new "Princess"
 
     # game/script.rpy:24
     old "Крестьянка"
-    new ""
+    new "Pesant"
 
     # game/script.rpy:44
     old "[say]"

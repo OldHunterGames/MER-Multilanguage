@@ -11,53 +11,38 @@ init python:
 # The game starts here.
 
 label splashscreen:
-    $ renpy.change_language(None)
     call screen sc_choose_language
     
     return
 
-label lang_rus:
-    $ renpy.change_language('rus')
-    return
-
 label start:
-    $ Outputable.set_lang(_preferences.language)
-    $ antosha = Outputable('Antosha Sichev', 'antosha')
-    $ to_say = antosha.description()
-    python:
-        string1 = __('Hello World!')
-        string2 = __('Bye bye dude')
-        strlist = [string1, string2]
-        outputted = choice(strlist)
-
     show expression "interface/bg_base.jpg" as bg
-
-    'Hello, world!'
-    '[to_say]'
-    '[outputted]'
-    'Kugelshkriber'
-    
     call lbl_choose_type
     return
     
 label lbl_choose_type:
     menu:
         'Дженерик':
-            $ chartype = 'generic'
+            $ to_say = generic
         'Принцесса':
-            $ chartype = 'princess'
+            $ to_say = princess
         'Крестьянка':
-            $ chartype = 'pesant'  
+            $ to_say = pesant  
             
     call lbl_output
     return
 
 label lbl_output:
+    $ say = to_say['hello']
+    '[to_say]'   
 
+    $ say = to_say['happy']
     '[to_say]'   
     
+    $ say = to_say['bye']    
+
     menu:
-        "That's all folks!":
+        "[say]":
             $ renpy.full_restart()
 
     return
@@ -70,10 +55,10 @@ screen sc_choose_language:
         hover 'images/rus.jpg'
         xalign 0.1 yalign 0.5
         focus_mask True 
-        action Jump('lang_rus')
+        action [Language('rus'), Return()]
     imagebutton:
         idle im.Grayscale('images/eng.jpg') 
         hover 'images/eng.jpg'
         xalign 0.9 yalign 0.5
         focus_mask True 
-        action Return()
+        action [Language('eng'), Return()]
