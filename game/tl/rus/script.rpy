@@ -3,30 +3,30 @@
 # game/script.rpy:37
 translate rus lbl_output_7fe2b33d:
 
-    # "[to_say]"
-    ""
+    # "[say]"
+    "[say]"
 
 # game/script.rpy:40
 translate rus lbl_output_7fe2b33d_1:
 
-    # "[to_say]"
-    ""
+    # "[say]"
+    "[say]"
 
 translate rus strings:
 
     # game/script.rpy:24
     old "Дженерик"
-    new ""
+    new "Дженерик"
 
     # game/script.rpy:24
     old "Принцесса"
-    new ""
+    new "Принцесса"
 
     # game/script.rpy:24
     old "Крестьянка"
-    new ""
+    new "Крестьянка"
 
     # game/script.rpy:44
     old "[say]"
-    new ""
+    new "[say]"
 

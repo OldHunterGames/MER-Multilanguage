@@ -21,6 +21,7 @@ label start:
     return
     
 label lbl_choose_type:
+    call texts_dictionary
     menu:
         'Дженерик':
             $ to_say = generic
@@ -34,10 +35,10 @@ label lbl_choose_type:
 
 label lbl_output:
     $ say = to_say['hello']
-    '[to_say]'   
+    '[say]'   
 
     $ say = to_say['happy']
-    '[to_say]'   
+    '[say]'   
     
     $ say = to_say['bye']    
 

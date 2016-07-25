@@ -3,14 +3,14 @@
 # game/script.rpy:37
 translate eng lbl_output_7fe2b33d:
 
-    # "[to_say]"
-    ""
+    # "[say]"
+    "[say]"
 
 # game/script.rpy:40
 translate eng lbl_output_7fe2b33d_1:
 
-    # "[to_say]"
-    ""
+    # "[say]"
+    "[say]"
 
 translate eng strings:
 
@@ -28,5 +28,5 @@ translate eng strings:
 
     # game/script.rpy:44
     old "[say]"
-    new ""
+    new "[say]"
 
