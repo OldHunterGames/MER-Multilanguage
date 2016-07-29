@@ -404,7 +404,7 @@ class Person(object):
     
 
     def count_modifiers(self, key):
-        val = self.modifiers.get_modified_attribute(key)
+        val = self.__dict__['modifiers'].get_modified_attribute(key)
         return val
     
     @property
@@ -464,12 +464,15 @@ class Person(object):
         else:
             return job
     def __getattribute__(self, key):
-        try:
-            genus = super(Person, self).__getattribute__('genus')
-            value = getattr(genus, key)
-            return value
-        except AttributeError:
-            return super(Person, self).__getattribute__(key)
+        if not key.startswith('__') and not key.endswith('__'):
+            try:
+                genus = super(Person, self).__getattribute__('genus')
+                value = getattr(genus, key)
+                genus.last_caller = self
+                return value
+            except AttributeError:
+                pass
+        return super(Person, self).__getattribute__(key)
 
     def __getattr__(self, key):
         if key in self.attributes:

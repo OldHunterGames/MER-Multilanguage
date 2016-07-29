@@ -3,31 +3,31 @@ def init_genus(caller, genus):
     for sub in Genus.__subclasses__():
         if sub.name == genus:
             try:
-                if caller.genus != sub:
-                    caller.genus.remove(caller)
+                if caller.genus.name != sub.name:
+                    caller.genus.remove()
             except AttributeError:
                 pass
-            sub.invoke(caller)
-            return sub
+            genus = sub(caller)
+            genus.invoke()
+            return genus
     raise Exception("No genus named %s"%(genus))
 
 
 class Genus(object):
-    pass
+    def __init__(self, owner):
+        self.owner = owner
 
 
 class Human(Genus):
     name = 'human'
     spirit = 0
     _features_ = ['human', 'human_head']
-    @classmethod
-    def remove(cls, caller):
-        for feature in cls._features_:
-            caller.remove_feature(feature)
-    @classmethod
-    def invoke(cls, caller):
-        for feature in cls._features_:
-            caller.add_feature(feature)
-        return cls
+    def remove(self):
+        for feature in self._features_:
+            self.owner.remove_feature(feature)
+    def invoke(self):
+        for feature in self._features_:
+            self.owner.add_feature(feature)
+        return self
 
 
