@@ -6,7 +6,7 @@ init -1 python:
     sys.path.append(renpy.loader.transfn("scripts/person"))
     from random import *
     from output import Outputable
-    import obj_character
+    from obj_character import Person
 init python:
     pass
 

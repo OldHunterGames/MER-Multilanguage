@@ -13,7 +13,7 @@ from copy import deepcopy
 from schedule import *
 from relations import Relations
 from stance import Stance
-
+from genus import init_genus
 persons_list = []
 
 class Fraction(object):
@@ -233,7 +233,7 @@ class Alignment(object):
 
 class Person(object):
 
-    def __init__(self, age='adolescent', gender='male'):
+    def __init__(self, age='adolescent', gender='male', genus='human'):
         self.player_controlled = False
         self._event_type = 'person'
         self.firstname = u"Антон"
@@ -244,7 +244,7 @@ class Person(object):
         self.tokens = []             # Special resources to activate various events
         self.relations_tendency = {'convention': 0, 'conquest': 0, 'contribution': 0}
         #obedience, dependecy and respect stats
-        self._stance = []
+        self._stance = []  
 
         self.master = None          # If this person is a slave, the master will be set
         self.supervisor = None
@@ -301,6 +301,7 @@ class Person(object):
         self._relations = []
         self.selfesteem = 0
         self.conditions = []
+        self.genus = init_genus(self, genus)
         persons_list.append(self)
 
     def randomise(self, gender='female', age='adolescent'):
@@ -389,7 +390,8 @@ class Person(object):
                 self.add_feature(needstree[need][1])
 
         return
-
+    def change_genus(self, genus):
+        self.genus = init_genus(self, genus)
     @property
     def known_characters(self):
         l = []
@@ -461,7 +463,16 @@ class Person(object):
             return None
         else:
             return job
-
+    def __getattribute__(self, key):
+        if not key.startswith('__') and not key.endswith('__'):
+            try:
+                genus = super(Person, self).__getattribute__('genus')
+                value = getattr(genus, key)
+                genus.last_caller = self
+                return value
+            except AttributeError:
+                pass
+        return super(Person, self).__getattribute__(key)
 
     def __getattr__(self, key):
         if key in self.attributes:
@@ -637,10 +648,6 @@ class Person(object):
   
 
     def skill(self, skillname):
-        if skillname == None:
-            return
-        if skillname in self.skills:
-            return skillname
         skill = None
         for i in self.skills:
             if i.name == skillname:
@@ -649,10 +656,11 @@ class Person(object):
             
         if skillname in skills_data:
             skill = Skill(self, skillname, skills_data[skillname])
+            self.skills.append(skill)
+            return skill
         else:
-            skill = Skill(self, skillname)
-        self.skills.append(skill)
-        return skill
+            raise Exception("No skill named %s in skills_data"%(skillname))
+        
 
 
     def tick_features(self):
