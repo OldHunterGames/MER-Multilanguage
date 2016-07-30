@@ -26,6 +26,18 @@ person_features = {
     'sensitive': {'slot': 'sensitivity_feat', 'modifiers': {'sensitivity': +1}, 'visible': True},
     'cool': {'slot': 'sensitivity_feat', 'modifiers': {'sensitivity': -1}, 'visible': True},
 
+    # anatomy
+    'small_breast': {'slot': 'breast_size', 'visible': True},
+    'normal_breast': {'slot': 'breast_size', 'visible': True},
+    'large_breast': {'slot': 'breast_size', 'visible': True},
+
+    'small_penis': {'slot': 'penis_size', 'visible': True},
+    'normal_penis': {'slot': 'penis_size', 'visible': True},
+    'large_penis': {'slot': 'penis_size', 'visible': True},
+
+    'human_penis': {'slot': 'penis_type', 'visible': True},
+    'canine_penis': {'slot': 'penis_type', 'visible': True},
+
     # needs
     'greedy': {'slot': 'prosperity_feat', 'modifiers': {'prosperity': +1}, 'visible': True},
     'generous': {'slot': 'prosperity_feat', 'modifiers': {'prosperity': -1}, 'visible': True},
